@@ -1,1 +1,24 @@
-<p>families works!</p>
+<h1>Families</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        
+    </tr>
+</thead>
+<tbody>
+    @for (families of Families; track $index) {
+        <tr>
+            <td>
+                <a [routerLink] = "['/FamiliesGenes',families.familyId]">{{families.familyId}}</a>
+                
+            </td>
+            <td>
+                {{families.name}}
+            </td>
+           
+        </tr>
+    }
+</tbody>
+</table>
