@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 interface WeatherForecast {
   date: string;
   temperatureC: number;
@@ -22,7 +22,7 @@ export class HelloComponent {
     this.getForecasts();
   }
   getForecasts() {
-    this.http.get<WeatherForecast[]>(environment.baseurl+'WeatherForecast').subscribe(
+    this.http.get<WeatherForecast[]>(`${environment.baseurl}WeatherForecast`).subscribe(
       (result) => {
         this.forecasts = result;
       },

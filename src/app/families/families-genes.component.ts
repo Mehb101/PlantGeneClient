@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, } from '@angular/router';
+import { ActivatedRoute, RouterLink} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { FamilyGenes } from './family-genes';
 import {MatTableModule} from '@angular/material/table';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-families-genes',
@@ -27,7 +26,7 @@ public displayedColumns : string[]= ["geneId","size","charecteristic","cost", "n
 
   getFamilyGenes() {
     let idparameter = this.activatedRoute.snapshot.paramMap.get("id");
-    this.id = idparameter? + idparameter:0;
+    this.id = idparameter? + idparameter: -1;
     this.http.get<FamilyGenes[]>(`${environment.baseurl}api/Family/FamiliesGenes/${this.id}`).subscribe(
       {
         next: result=> this.FamiliesGenes = result,
